@@ -29,7 +29,7 @@ export class PassportNumberDirective {
       this.color = 'red';
     }else{
       this.border = '1px solid black';
-      this.color = 'black';
+      this.color = 'green';
     }
 
   } 
