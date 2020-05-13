@@ -1,3 +1,13 @@
 p {
   font-family: Lato;
 }
+
+label{
+  vertical-align: bottom;
+}
+
+input {
+  width: 250px;
+  height: 35px;
+  text-transform: Uppercase;
+}

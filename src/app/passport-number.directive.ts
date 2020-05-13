@@ -8,20 +8,29 @@ export class PassportNumberDirective {
   constructor() {}
 
   @HostBinding('style.border') border: string;
+  @HostBinding('style.color') color: string;
 
-  @HostListener('input', ['$event']) onKeyDown(event: KeyboardEvent){
-    const input = event.target as HTMLInputElement;
-    let trimmed = input.value.replace(/\s+/g, '');
-    if(trimmed.length > 9){
-      trimmed = trimmed.substr(0, 9);
-    }
-
-    this.border = '';
+  @HostListener('input', ['$event']) onInput(event: InputEvent){
     
-    if(trimmed.charAt(0)!=='A'&& (/[^\d]+/.test(trimmed.substring(1, trimmed.length)))){
-      this.border = '1px solid red';
+    const input = event.target as HTMLInputElement;
+    this.border = '';
+    this.color = '';
+
+    if(input.value === ''){
+      this.border = '';
+      this.color = '';
     }
 
+    let rePattern: RegExp = /^[A][0-9]{8}$/;
+    console.log(rePattern.test(input.value.toUpperCase()));
+    
+    if(!rePattern.test(input.value.toUpperCase())){
+      this.border = '2px solid red';
+      this.color = 'red';
+    }else{
+      this.border = '1px solid black';
+      this.color = 'black';
+    }
 
   } 
 }
