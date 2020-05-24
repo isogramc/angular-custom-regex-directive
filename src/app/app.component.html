@@ -5,10 +5,32 @@
 
 <p>Nationality: South African</p>
 <p><label>Passport Number: 
-  <input type="text" Placeholder="Enter your 9 digit Passport Number" appPassportNumber></label>
+  <input class="lastpass" type="text" Placeholder="Enter your 9 digit Passport Number" appPassportNumber></label>
 </p>
 
 <p>Nationality: Other(Unknown)</p>
 <p><label>Passport Number: 
-  <input type="text" Placeholder="Enter your 9 digit Passport Number"></label>
+  <input class="lastpass" type="text" Placeholder="Enter your 9 digit Passport Number"></label>
 </p>
+
+<div class="container-fluid">
+<form [formGroup]="loginForm" novalidate class="form" (ngSubmit)="ifLoginUser()">
+  <input class="form-control" formControlName="email" type="text" placeholder="Enter Email">
+  <br>
+  <div class="custom-error" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
+      *Please enter email
+  </div>
+  <input class="form-control" formControlName="password" type="password" placeholder="Enter password">
+   <div class="custom-error" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+        *Password is required and must be valid
+    </div><br>
+    <input class="form-control" formControlName="age" type="number" placeholder="Enter Age">
+       <div class="custom-error" *ngIf="loginForm.get('age').dirty && loginForm.get('age').errors && loginForm.get('age').errors.ageRange">
+            *Input age must be between {{minAge}} and {{maxAge}}
+        </div>
+      <br>
+  <button [disabled]="loginForm.invalid">Submit</button>
+</form>
+{{loginForm.value | json}}{{loginForm.status | json}}
+</div>
+

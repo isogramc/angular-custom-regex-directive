@@ -6,8 +6,31 @@ label{
   vertical-align: bottom;
 }
 
+input.lastpass {
+  width: 289px;
+  height: 35px;
+  text-transform: Uppercase;
+  margin-top: 5px;
+}
+
 input {
   width: 250px;
   height: 35px;
-  text-transform: Uppercase;
+  margin-top: 5px;
+}
+
+button {
+ width: 247px;
+ height: 35px;
+ margin: 10px;
+
+}
+
+.custom-error{
+  width: 230px;
+  height: 35px;
+  margin: 0 10px;
+  background-color: rgba(255,0,0, 0.5);
+  color: red;
+  padding: 5px;
 }
